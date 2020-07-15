@@ -1,2 +1,2 @@
-# DevOps_pages
-Contains the web pages used in DevOps Mini Project
+# Automated-Work-Flow-using-GIT-JENKINS-and-DOCKER
+
