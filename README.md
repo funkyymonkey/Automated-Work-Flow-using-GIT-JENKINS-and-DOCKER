@@ -25,56 +25,57 @@ Once QA Team will approve the design in Developer Branch, it will be merged to M
 ## WORK PROCESS
 
 
-TOOLS USED
-For Automation: JENKINS
-For Containerization: DOCKER
-For Repository Hosting: GitHub
-For Version controlling: Git
+#### TOOLS USED
+For Automation: **JENKINS**
+For Containerization: **DOCKER**
+For Repository Hosting: **GitHub**
+For Version controlling: **Git**
 
 
 ________________________
 
-AUTOMATIC PUSH IN GIT
+#### AUTOMATIC PUSH IN GIT
 Here, we can see initially both the branches are at the same commit level.
 
-No alt text provided for this image
-No alt text provided for this image
+![IMAGE](https://github.com/funkyymonkey/Automated-Work-Flow-using-GIT-JENKINS-and-DOCKER/blob/master/task%20snaps/initial%20(1).PNG)
+![IMAGE](https://github.com/funkyymonkey/Automated-Work-Flow-using-GIT-JENKINS-and-DOCKER/blob/master/task%20snaps/initial%20(2).PNG)
+
 Then the developer will clone the repository in his system using the following command.
 
-No alt text provided for this image
+![IMAGE]()
 In the following way, a post-commit file will be created which will automatically push the repository once a developer commits.
 
-No alt text provided for this image
+![IMAGE]()
 The following are the changes made by the developer.
 
-No alt text provided for this image
+![IMAGE]()
 RESULT OF POST COMMIT
 
-No alt text provided for this image
+![IMAGE]()
 In the above picture, as soon as the developer enters the command to commit the changes, it is also pushed and the changes are reflected in GitHub.
 
 
-JENKINS JOB DESCRIPTION
-No alt text provided for this image
+#### JENKINS JOB DESCRIPTION
+![IMAGE]()
 Points To Remember:
 
 You have already downloaded the GIT plugin in Jenkins.
 Make sure to run following command in RedHat Base OS to start Docker services.
-No alt text provided for this image
+![IMAGE]()
 __________________
 
 There are three independent jobs (no job chaining).
 
-No alt text provided for this image
+![IMAGE]()
 __________________
 
 The jobs are explained in detail as follows:
 
-**JOB1**
+_**JOB1**_
 
 This job will pull the code files from the MASTER BRANCH and then will launch a container using the httpd docker image for final production.
 
-No alt text provided for this image
+![IMAGE]()
 Link Jenkins with MASTER BRANCH to pull final files.
 
 No alt text provided for this image
@@ -85,67 +86,68 @@ Remote Build is used, as JOB3 has to trigger JOB1.
 No alt text provided for this image
 Bash commands to launch a container for deploying webpage on httpd server for clients.
 
-RESULT OF JOB 1
+_**RESULT OF JOB 1**_
 
-No alt text provided for this image
+![IMAGE]()
 As we can see, this build successfully launched the "final_display" container which launches the webpage at port number 8084.
 
 The webpage is showing initial commits.
 
 
 
-**JOB2**
+_**JOB2**_
 
 This job will pull the code files from the DEV BRANCH. Then docker will launch a container using the httpd docker image to a specific port number for the Quality Assurance Team to test the webpage.
 
-No alt text provided for this image
+![IMAGE]()
 Pulling files from DEVELOPER BRANCH.
 
-No alt text provided for this image
+![IMAGE]()
 Poll SCM will keep checking every minute for any updates.
 
 We can also use GitHub hooks to inform Jenkins about any modifications.
 
-No alt text provided for this image
+![IMAGE]()
 Bash commands to launch a container for deploying webpage for QA Team on a different port.
 
-RESULT OF JOB 2
+_**RESULT OF JOB 2**_
 
-No alt text provided for this image
+![IMAGE]()
 This build successfully launched a "test_env" container which launches the webpage at port number 8085.
 
 Also, there is no change in the previously launched final webpage at port number 8084 (top-right window).
 
 
 
-**JOB3**
+_**JOB3**_
 
 Once the Quality Assurance Team approves the web page, they will start the job. And this job will then merge the DEVELOPER BRANCH to MASTER BRANCH and will trigger Job1 which will deploy the updated final webpage in httpd webserver. 
 
-No alt text provided for this image
+![IMAGE]()
 Link to DEV branch in GitHub.
 
-No alt text provided for this image
+![IMAGE]()
 Specify the "Pre-build actions", for merging the branches in GitHub as shown in the above image.
 
-No alt text provided for this image
+![IMAGE]()
 There is no need for any build trigger as this job will be built manually by the QA Team.
 
-No alt text provided for this image
+![IMAGE]()
 Bash commands to trigger JOB1 and delete already deployed final webpage.
 
-No alt text provided for this image
-RESULT OF JOB 3
+![IMAGE]()
 
-No alt text provided for this image
+_**RESULT OF JOB 3**_
+
+![IMAGE]()
 Here we can see, as soon as Job3 is completed, it has triggered Job1 (right window)
 
-No alt text provided for this image
+![IMAGE]()
 Also, both the windows of final production (port_no 8084) and test environment (port_no 8085) have the same content, i.e. branches have been merged.
 
 
 
-<>FUTURE SCOPE
+## FUTURE SCOPE
 In this project, I have considered only the following things for automation:
 
 pushing repository after committing.
