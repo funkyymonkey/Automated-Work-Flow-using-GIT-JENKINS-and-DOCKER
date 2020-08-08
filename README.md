@@ -7,9 +7,9 @@ This project is about creating an automatic setup for an organization.
 
 In this project, three aspects are considered which includes
 
- -how a developing team works on a central version controlling system
- -how a webpage is tested by the Quality Assurance Team, and then
- -how a webpage is deployed finally for the clients.
+-how a developing team works on a central version controlling system
+-how a webpage is tested by the Quality Assurance Team, and then
+-how a webpage is deployed finally for the clients.
 
 
 
